@@ -1,0 +1,54 @@
+<%- include("partials/header") %>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<a class="navbar-brand" href="/">Yelp Campgrounds</a>
+		<ul class="collapse navbar-collapse my-auto">
+			<li class="d-inline mx-1">
+				<a class="btn btn-info text-white">
+					Log In
+				</a>
+			</li>
+			<li class="d-inline mx-1">
+				<a class="btn btn-info text-white">
+					Sign Up
+				</a>
+			</li>
+			<li class="d-inline mx-1">
+				<a class="btn btn-info text-white">
+					Log Out
+				</a>
+			</li>
+		</ul>
+</nav>
+
+<!--End of Navbar-->
+
+<div class="container">
+	<header class="jumbotron">
+	<h1 class="text-center display-3">
+		YelpCamps! Search
+	</h1>
+	</header>
+
+<div class="container d-flex justify-content-flex-start">
+	<form action="/campgrounds" method="POST">
+		<div class="form-group">
+			<input class="form-control d-block my-2" type="text" placeholder="Camp Name" name="name">
+		</div>
+		<div class="form-group">
+			<input class="form-control d-block my-2" type="text" placeholder="Image URL" name="image">
+		</div>
+		<div class="form-group">
+			<button class="d-block btn btn-lrg btn-info btn-block my-2" type="submit">
+				Submit
+			</button>
+		</div>
+		<div class="form-group">
+			<a href="/">Return to Home</a>
+		</div>
+	</form>
+</div>
+	
+</div> 
+
+<%- include("partials/footer") %>

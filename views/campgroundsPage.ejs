@@ -1,0 +1,57 @@
+<%- include("partials/header") %>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<a class="navbar-brand" href="/">Yelp Campgrounds</a>
+		<ul class="collapse navbar-collapse my-auto">
+			<li class="d-inline mx-1">
+				<a class="btn btn-info text-white" href="/">
+					Log In
+				</a>
+			</li>
+			<li class="d-inline mx-1">
+				<a class="btn btn-info text-white" href="/">
+					Sign Up
+				</a>
+			</li>
+			<li class="d-inline mx-1">
+				<a class="btn btn-info text-white" href="/">
+					Log Out
+				</a>
+			</li>
+		</ul>
+</nav>
+
+<!--End of Navbar-->
+
+<div class="container">
+	<header class="jumbotron">
+		<div class="container">
+			<h1 class="text-center">
+				Campgrounds
+			</h1>
+			<button class="btn btn-info btn-lrg">
+				<a class="text-white" href="/campgrounds/new">Add New Campground</a>
+			</button>
+		</div>
+	</header>
+
+
+	<div class="row">
+		<% campgrounds.forEach(function(camp) { %>
+			<div class="col-md-4 col-sm-6">
+				<div class="card">
+					<img class="card-img-top img-thumbnail" src= '<%= camp.image %>' >
+					<div class="card-body">
+						<h5 class="card-title text-center">
+							<%= camp.name %>
+						</h5>
+					</div>
+				</div>
+			</div>
+		<% }); %>
+	</div>
+
+	<a href="/">Return to Home</a>
+
+	<%- include("partials/footer") %>
+</div>
