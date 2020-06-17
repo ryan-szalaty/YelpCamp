@@ -4,11 +4,11 @@ const request = require("request");
 const bodyParser = require("body-parser");
 
 let campgrounds = [
-		{name: "High Rise", image: "https://pixabay.com/get/57e1dd4a4350a514f1dc84609620367d1c3ed9e04e507440772d7ad49e4ac0_340.jpg"},
-		{name: "Divorce Mountain", image: "https://pixabay.com/get/57e8d0424a5bae14f1dc84609620367d1c3ed9e04e507440772d7ad49e4ac0_340.jpg"},
-		{name: "AA Cabin", image: "https://pixabay.com/get/54e5dc474355a914f1dc84609620367d1c3ed9e04e507440772d7ad49e4ac0_340.jpg"},
-		{name: "Witch's House", image: "https://pixabay.com/get/52e8d4444255ae14f1dc84609620367d1c3ed9e04e507440772d7ad49e4ac0_340.jpg"},
-		{name: "Liver River", image: "https://pixabay.com/get/52e3d5404957a514f1dc84609620367d1c3ed9e04e507440772d7ad49e4ac0_340.jpg"}
+		{name: "High Rise", image: "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"},
+		{name: "Divorce Mountain", image: "https://images.unsplash.com/photo-1532339142463-fd0a8979791a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"},
+		{name: "AA Cabin", image: "https://images.unsplash.com/photo-1571863533956-01c88e79957e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"},
+		{name: "Witch's House", image: "https://images.unsplash.com/photo-1508873696983-2dfd5898f08b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60g"},
+		{name: "Liver River", image: "https://images.unsplash.com/photo-1537565266759-34bbc16be345?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"}
 	];
 
 app.use(bodyParser.urlencoded({extended: true}));
@@ -28,7 +28,7 @@ app.get("/campgrounds", (req, res) => {
 
 app.post("/campgrounds", (req, res) => {
 	let campName= req.body.name; //comes from name attribute
-	let campImage= req.body.image; //comes from name attribute
+	let campImage= req.body.image; 
 	let newCampground = {name: campName, image: campImage};
 	campgrounds.push(newCampground);
 	res.redirect("/campgrounds");
