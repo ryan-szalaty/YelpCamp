@@ -12,14 +12,16 @@ mongoose.set('useCreateIndex', true);
 
 let campgroundSchema = new mongoose.Schema({ 
 	name: String,
-	image: String
+	image: String,
+	description: String
 });
 
 let Campground = mongoose.model("Campground", campgroundSchema);
 
 /*
 Campground.create({name: "Divorce Mountain", 
-				   image: "https://images.unsplash.com/photo-1532339142463-fd0a8979791a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"}, (err, campground) => {
+				   image: "https://images.unsplash.com/photo-1532339142463-fd0a8979791a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
+				   description: "Daddy's still out buying the milk." }, (err, campground) => {
 				  
 	if(err) {
 		console.log("ERROR.");
@@ -47,7 +49,7 @@ app.get("/campgrounds", (req, res) => {
 			console.log(err);
 		} else {
 			console.log("Successfully found: " + allCampgrounds);
-			res.render("campgroundsPage", {campgrounds: allCampgrounds});
+			res.render("index", {campgrounds: allCampgrounds});
 		};
 					});
 });
@@ -55,7 +57,8 @@ app.get("/campgrounds", (req, res) => {
 app.post("/campgrounds", (req, res) => {
 	let campName= req.body.name; //comes from name attribute
 	let campImage= req.body.image; 
-	let newCampground = {name: campName, image: campImage};
+	let campDesc= req.body.description;
+	let newCampground = {name: campName, image: campImage, description: campDesc};
 	Campground.create(newCampground, (err, createdCampground) => {
 		if(err) {
 			console.log(err);
@@ -66,6 +69,17 @@ app.post("/campgrounds", (req, res) => {
 	});
 
 });
+
+app.get("/campgrounds/:id", (req, res) => {
+		let id = req.params.id;
+		Campground.findById(id, (err, foundCampground) => {
+			if(err) {
+				console.log(err);
+			} else {
+				res.render("show", {campgrounds: foundCampground});
+			}
+							});
+		});
 
 
 app.listen(process.env.PORT || 3000, process.env.IP, () => {
