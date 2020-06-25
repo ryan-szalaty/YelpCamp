@@ -2,38 +2,18 @@ const express = require("express"),
 	app = express(),
 	request = require("request"),
  	bodyParser = require("body-parser"),
-	mongoose = require("mongoose");
+	mongoose = require("mongoose"),
+	methodOverride = require("method-override"),
+	Campground = require("./models/campground");
 
 mongoose.connect("mongodb://localhost:27017/yelp-camp", {useNewUrlParser: true, useUnifiedTopology: true});
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
 
-//Schema setup
 
-let campgroundSchema = new mongoose.Schema({ 
-	name: String,
-	image: String,
-	description: String
-});
-
-let Campground = mongoose.model("Campground", campgroundSchema);
-
-/*
-Campground.create({name: "Divorce Mountain", 
-				   image: "https://images.unsplash.com/photo-1532339142463-fd0a8979791a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
-				   description: "Daddy's still out buying the milk." }, (err, campground) => {
-				  
-	if(err) {
-		console.log("ERROR.");
-	} else {
-		console.log("Successfully added.");
-		console.log(campground);
-	};
-				  });
-*/
 
 app.use(bodyParser.urlencoded({extended: true}));
-app.set("view engine", "ejs"); //allows removal of .ejs from .render
+app.set("view engine", "ejs"); 
 
 app.get("/", (req, res) => {
 	res.render("landingPage");
