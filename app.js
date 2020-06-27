@@ -4,8 +4,10 @@ const express = require("express"),
  	bodyParser = require("body-parser"),
 	mongoose = require("mongoose"),
 	methodOverride = require("method-override"),
-	Campground = require("./models/campground");
+	Campground = require("./models/campground"),
+	seedDB = require("./seeds");
 
+seedDB();
 mongoose.connect("mongodb://localhost:27017/yelp-camp", {useNewUrlParser: true, useUnifiedTopology: true});
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
