@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Campground = require("./models/campground");
 const Comment = require("./models/comment");
 
-const data = [
+let data = [
 	{
 	name: "Divorce Mountain",
 	image: "https://images.unsplash.com/photo-1532339142463-fd0a8979791a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
@@ -27,11 +27,11 @@ function seedDB() {
 	}
 	console.log("Campground removed.");
 			data.forEach(function(seed) {
-			Campground.create(seed, (err, data) => {
+			Campground.create(seed, (err, campground) => {
 			if(err) {
 				console.log(err);
 			} else {
-				console.log("Added: " + data);
+				console.log("Added: " + campground);
 				Comment.create(
 					{
 						text: "This place is great, but no internet.",
@@ -40,7 +40,7 @@ function seedDB() {
 						if(err) {
 							console.log(err);
 						} else {
-							data.comments.push(comment);
+							campground.comments.push(comment);
 							comment.save();
 						}
 					}
@@ -50,8 +50,6 @@ function seedDB() {
 	});
 	});
 };
-
-
 
 module.exports = seedDB;
 

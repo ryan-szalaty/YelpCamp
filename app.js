@@ -30,7 +30,6 @@ app.get("/campgrounds", (req, res) => {
 		if(err) {
 			console.log(err);
 		} else {
-			console.log("Successfully found: " + allCampgrounds);
 			res.render("index", {campgrounds: allCampgrounds});
 		};
 					});
@@ -54,10 +53,11 @@ app.post("/campgrounds", (req, res) => {
 
 app.get("/campgrounds/:id", (req, res) => {
 		let id = req.params.id;
-		Campground.findById(id, (err, foundCampground) => {
+		Campground.findById(id).populate("comments").exec(function(err, foundCampground) {
 			if(err) {
 				console.log(err);
 			} else {
+				console.log(foundCampground);
 				res.render("show", {campgrounds: foundCampground});
 			}
 							});
