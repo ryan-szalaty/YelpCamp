@@ -20,36 +20,44 @@ let data = [
 	}
 ]
 
-function seedDB() {
-	Campground.deleteMany({}, (err) => {
-	if(err) {
-		console.log(err);
-	}
-	console.log("Campground removed.");
-			data.forEach(function(seed) {
-			Campground.create(seed, (err, campground) => {
-			if(err) {
-				console.log(err);
-			} else {
-				console.log("Added: " + campground);
-				Comment.create(
-					{
-						text: "This place is great, but no internet.",
-						author: "Homer"
-					}, (err, comment) => {
-						if(err) {
-							console.log(err);
-						} else {
-							campground.comments.push(comment);
-							comment.save();
-						}
-					}
-				);
-			}
-		});
-	});
-	});
-};
-
+function seedDB(){
+   //Remove all campgrounds
+   Campground.deleteMany({}, (err) => {
+        if(err){
+            console.log(err);
+        }
+        console.log("removed campgrounds!");
+        Comment.deleteMany({}, (err) => {
+            if(err){
+                console.log(err);
+            }
+            console.log("removed comments!");
+             //add a few campgrounds
+            data.forEach(function(seed){
+                Campground.create(seed, (err, campground) => {
+                    if(err){
+                        console.log(err)
+                    } else {
+                        console.log("added a campground");
+                        //create a comment
+                        Comment.create(
+                            {
+                                text: "This place is great, but I wish there was internet",
+                                author: "Homer"
+                            }, (err, comment) => {
+                                if(err){
+                                    console.log(err);
+                                } else {
+                                    campground.comments.push(comment);
+                                    campground.save();
+                                    console.log("Created new comment");
+                                }
+                            });
+                    }
+                });
+            });
+        });
+    }); 
+}
+ 
 module.exports = seedDB;
-

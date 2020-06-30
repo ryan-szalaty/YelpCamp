@@ -1,1 +1,1 @@
-mongod --nojournal
+mongod --dbpath=data --nojournal

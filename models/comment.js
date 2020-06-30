@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-let commentSchema = new mongoose.Schema({
+let commentSchema = mongoose.Schema({
 		text: String,
 		author: String
 	});
