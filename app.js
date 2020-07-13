@@ -20,7 +20,7 @@ mongoose.connect("mongodb://localhost:27017/yelp-camp", {useNewUrlParser: true, 
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
 
-
+app.use(methodOverride("_method"));
 app.use(function(req, res, next) {
 	res.locals.currentUser = req.user;
 	next();
