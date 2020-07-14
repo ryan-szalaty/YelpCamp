@@ -30,6 +30,7 @@ router.post("/campgrounds", isLoggedIn, (req, res) => {
 		if(err) {
 			console.log(err);
 		} else {
+			createdCampground.save();
 			res.redirect("/campgrounds");
 		};
 		
@@ -44,7 +45,7 @@ router.get("/campgrounds/:id", (req, res) => {
 				console.log(err);
 			} else {
 				console.log(foundCampground);
-				res.render("campgrounds/show", {campgrounds: foundCampground});
+				res.render("campgrounds/show", {campgrounds: foundCampground, currentUser: req.user});
 			}
 							});
 		});

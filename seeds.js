@@ -19,21 +19,35 @@ let data = [
 	description: "What more needs to be said?"
 	}
 ]
+/*function deleteAll() {
+	Campground.deleteMany({}, (err) => {
+		if(err) {
+			console.log(err);
+		}
+		Comment.deleteMany({}, (err) => {
+			if(err) {
+				console.log(err);
+			}
+		});
+	});
+}*/
 
-function seedDB(){
+function seedDB() {
    //Remove all campgrounds
    Campground.deleteMany({}, (err) => {
         if(err){
             console.log(err);
         }
-        console.log("removed campgrounds!");
         Comment.deleteMany({}, (err) => {
             if(err){
                 console.log(err);
             }
-            console.log("removed comments!");
+		});
+   });
+}
+			
              //add a few campgrounds
-            data.forEach(function(seed){
+            /*data.forEach(function(seed){
                 Campground.create(seed, (err, campground) => {
                     if(err){
                         console.log(err)
@@ -58,6 +72,6 @@ function seedDB(){
             });
         });
     }); 
-}
+}*/
  
 module.exports = seedDB;
