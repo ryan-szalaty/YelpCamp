@@ -47,12 +47,14 @@
 					</div>
 				<div>
 					<a class="btn btn-info mx-2" href="/campgrounds/<%= campgrounds._id %>/comments/new">Add a comment</a>
+					<% if(currentUser && campgrounds.author.id.equals(currentUser._id)) { %>
 					<a class="btn btn-warning mx-2" href="/campgrounds/<%= campgrounds._id %>/edit">Edit Campground</a>
 					<form action="/campgrounds/<%= campgrounds._id %>?_method=DELETE" method="POST">
 						<button class="btn btn-danger d-inline mx-2 my-3">
 							Delete Campground
 						</button>
 					</form>
+					<% } %>
 				</div>
 			</div>
 			</div>

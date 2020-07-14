@@ -21,10 +21,12 @@ mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
 
 app.use(methodOverride("_method"));
+
 app.use(function(req, res, next) {
 	res.locals.currentUser = req.user;
 	next();
 });
+
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/public"));
 app.set("view engine", "ejs"); 
