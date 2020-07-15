@@ -6,3 +6,7 @@ body {
 	padding-right: 30px;
 	font-weight: bold;
 }
+
+.button {
+	display: inline;
+}

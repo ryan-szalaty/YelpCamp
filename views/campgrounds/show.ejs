@@ -30,6 +30,16 @@
 					<p class="card-text">
 						Submitted by <strong><%= campgrounds.author.username %></strong> 
 					</p>
+					<div>
+						<% if(currentUser && campgrounds.author.id.equals(currentUser._id)) { %>
+						<a class="btn btn-sm btn-warning" href="/campgrounds/<%= campgrounds._id %>/edit">Edit Campground</a>
+						<form class="button" action="/campgrounds/<%= campgrounds._id %>?_method=DELETE" method="POST">
+							<button class="btn btn-sm btn-danger my-3">
+								Delete Campground
+							</button>
+						</form>
+						<% } %>
+					</div>
 				</div>
 				<div class="card-footer panel-primary">
 					<div class="card-text">
@@ -37,26 +47,32 @@
 							<div class="row">
 								<div class="col-md-12">
 									<strong><%= comment.author.username %></strong>
+									<a class="float-md-right btn-sm btn btn-info mx-2" href="/campgrounds/
+									<%= campgrounds._id %>/comments/new">Add a comment</a>
 									<span class="float-md-right">10 days ago</span>
 									<p>
 										<%= comment.text %>
 									</p>
+	<!------------------------------USER Authorization---------------------------------->
+									<% if(currentUser && comment.author.id.equals(currentUser._id)) { %>
+										<a class="btn btn-sm btn-secondary" 
+					   					href="/campgrounds/<%= campgrounds._id %>/comments/<%= comment._id %>/edit">
+											Edit
+										</a>
+									<form class="button" action="/campgrounds/<%= campgrounds._id %>/comments/
+									<%= comment._id %>?_method=DELETE", method="POST">
+										<button class="btn btn-sm btn-danger" type="submit">
+											Delete 
+										</button>
+									</form>
+									<% } %>
+	<!------------------------------USER Authorization--------------------------------------------->
 								</div>	
 							</div>
+						<hr>
 						<% }) %>
 					</div>
-				<div>
-					<a class="btn btn-info mx-2" href="/campgrounds/<%= campgrounds._id %>/comments/new">Add a comment</a>
-					<% if(currentUser && campgrounds.author.id.equals(currentUser._id)) { %>
-					<a class="btn btn-warning mx-2" href="/campgrounds/<%= campgrounds._id %>/edit">Edit Campground</a>
-					<form action="/campgrounds/<%= campgrounds._id %>?_method=DELETE" method="POST">
-						<button class="btn btn-danger d-inline mx-2 my-3">
-							Delete Campground
-						</button>
-					</form>
-					<% } %>
 				</div>
-			</div>
 			</div>
 		</div>
 	</div>

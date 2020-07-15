@@ -1,0 +1,28 @@
+<%- include("../partials/header") %>
+
+<div class="container">
+	<header class="jumbotron">
+	<h1 class="text-center display-3">
+		Edit Comment:
+	</h1>
+	</header>
+
+<div class="container d-flex justify-content-flex-start">
+	<form action="/campgrounds/<%= campground_id %>/comments/<%= comment._id %>?_method=PUT" method="POST">
+		<div class="form-group">
+			<input class="form-control d-block my-2" type="text" value="<%= comment.text %>" name="comment[text]">
+		</div>
+		<div class="form-group">
+			<button class="d-block btn btn-lrg btn-info btn-block my-2" type="submit">
+				Update
+			</button>
+		</div>
+		<div class="form-group">
+			<a href="/">Return to Home</a>
+		</div>
+	</form>
+</div>
+	
+</div> 
+
+<%- include("../partials/footer") %>
