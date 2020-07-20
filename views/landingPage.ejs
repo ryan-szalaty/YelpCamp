@@ -1,21 +1,37 @@
-<%- include("partials/header") %>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Yelp Campgrounds</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/stylesheets/landing.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js">
+</head>	
 
-<div class="container">
-	<header class="jumbotron">
-		<h1 class="text-center display-3">
+<body>
+
+	<div class="landing-header">
+		<h1>
 			Welcome to YelpCamp!
 		</h1>
-		<p class="text-muted text-center">
-			You're probably here because your parents don't want you.
-		</p>
-	</header>
-</div>
+		<a class="btn btn-lg btn-info" href="/campgrounds">Get Started</a>
+		<a class="btn btn-lg btn-info" href="/login">Login</a>
+	</div>
+	
+
+
+	<ul class="slideshow">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
 
 
 
 
-<a href="/campgrounds">See Campgrounds</a>
-<br>
-<a href="/campgrounds/new">Add Camps</a>
+
+
+
 
 <%- include("partials/footer") %>
